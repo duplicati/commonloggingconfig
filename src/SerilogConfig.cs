@@ -24,4 +24,4 @@ namespace CommonLoggingConfig;
 /// </summary>
 /// <param name="SourceToken">The Source Token</param>
 /// <param name="Endpoint">The endpoint for the ingesting host</param>
-public sealed record SerilogConfig(string SourceToken, string? Endpoint = null);
+public sealed record SerilogConfig(string? SourceToken = null, string? Endpoint = null);
