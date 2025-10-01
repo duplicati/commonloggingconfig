@@ -37,7 +37,7 @@ public static class CommonLoggingExtensions
     /// <param name="serilogConfig">The Serilog configuration</param>
     /// <param name="configureLogger">An optional action to configure the logger</param>
     /// <returns>The WebApplicationBuilder</returns>
-    public static WebApplicationBuilder AddCommonLogging(this WebApplicationBuilder builder, SerilogConfig serilogConfig, LoggingExtras extras, Action<LoggerConfiguration>? configureLogger = null)
+    public static WebApplicationBuilder AddCommonLogging(this WebApplicationBuilder builder, SerilogConfig? serilogConfig, LoggingExtras? extras, Action<LoggerConfiguration>? configureLogger = null)
     {
         builder.Host.UseSerilog((context, services, config) =>
         {
@@ -50,12 +50,13 @@ public static class CommonLoggingExtensions
                 .Enrich.WithRequestHeader("User-Agent")
                 .WriteTo.Console();
 
-            foreach (var p in extras.GetType().GetProperties())
-            {
-                var v = p.GetValue(extras)?.ToString();
-                if (!string.IsNullOrWhiteSpace(v))
-                    config.Enrich.WithProperty(p.Name, v);
-            }
+            if (extras != null)
+                foreach (var p in extras.GetType().GetProperties())
+                {
+                    var v = p.GetValue(extras)?.ToString();
+                    if (!string.IsNullOrWhiteSpace(v))
+                        config.Enrich.WithProperty(p.Name, v);
+                }
 
             if (!string.IsNullOrWhiteSpace(serilogConfig?.SourceToken))
             {

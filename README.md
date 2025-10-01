@@ -9,9 +9,9 @@ using CommonLoggingConfig;
 
 var builder = WebApplication.CreateBuilder(args);
 var serilogConfig = builder.Configuration.GetSection("Serilog").Get<SerilogConfig>();
-var extras = new LoggingExtras() { IsProd = false; }
+var extras = new LoggingExtras() { IsProd = false };
 
-builder.AddCommonLogging(config, serilogConfig, extras);
+builder.AddCommonLogging(serilogConfig, extras);
 
 var app = builder.Build();
 app.UseCommonLogging();
