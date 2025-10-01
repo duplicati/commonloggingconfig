@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>CommonDuplicatiConsoleLogging</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Title>Common Duplicati Console Logging</Title>
     <Authors>duplicati</Authors>
     <Owners>duplicati</Owners>
@@ -16,7 +16,7 @@
     <PackageProjectUrl>https://github.com/duplicati/commonloggingconfig</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Common logging configuration for Duplicati</Description>
-    <PackageReleaseNotes>Fixed nullability for args</PackageReleaseNotes>
+    <PackageReleaseNotes>Allow empty source token</PackageReleaseNotes>
     <Copyright>Copyright 2025, Duplicati Inc</Copyright>
     <PackageTags>ASP.NET Core Logging</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
